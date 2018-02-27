@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<title>Vue Practice</title>
+	<script src="https://cdn.jsdeliver.net/npm/vue"></script> 
+</head>
+<body>
+	<a href="/">go to root</a>
+	<div id="app-6">
+		<p>{{ message }}</p>
+		<input v-model="message">
+	</div>
+	<script>
+		var app6 = new Vue({
+			el: '#app-6',
+			data: {
+				message: 'hihihihihi vue'	
+			}
+		})
+	</script>
+</body>
+</html>
