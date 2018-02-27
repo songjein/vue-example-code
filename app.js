@@ -1,11 +1,14 @@
 var express = require('express');
-var app = express();
 var path = require('path');
 
-app.use(express.static('public'));
+var fs = require('fs');
 
-app.get('/', function(req,res) {
-	res.sendFile("/public/index.html")
+var app = express();
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', function(req,res){
+	res.send("type <b>address:port</b>/<span style='color:red'>filename</span><br>file list : " +  fs.readdirSync("public"));
 });
 
 app.listen(9998, function(){
