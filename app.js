@@ -8,7 +8,11 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req,res){
-	res.send("type <b>address:port</b>/<span style='color:red'>filename</span><br>file list : " +  fs.readdirSync("public"));
+	filelist = "";
+	fs.readdirSync("public").forEach(file => {
+		filelist += '<a href="/' + file + '">' + file + '</a><br>';
+	})
+	res.send("type <b>address:port</b>/<span style='color:red'>filename</span><br>" + filelist);
 });
 
 app.listen(9998, function(){
