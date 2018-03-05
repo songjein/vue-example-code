@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<title>Vue Practice</title>
+	<!--<script src="https://cdn.jsdeliver.net/npm/vue"></script> -->
+    <script src="/vue.js"></script>
+</head>
+<body>
+	<a href="/">go to root</a>
+    <div id="app">
+        <p>{{ reversedMessage }}</p>
+        <p>
+            computed 속성의 장점은, 
+            이 속성 안에서 사용하고 있는 data 속성 값이 변경되면 전체 값을
+            다시 한번 계산. + 캐싱도
+            methods 속성과의 차이점은 method는 호출 될 때만 수행되고
+            computed 속성은 대상 데이터 값이 변경되면 자동으로 수행됨
+        </p>
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMsg">문자열 역순</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue js'
+            },
+            methods: {
+                reverseMsg: function(){
+                    this.message = this.message.split('').reverse().join('');
+                    return this.message
+                }
+            },
+            computed: {
+                reversedMessage: function(){
+                    return this.message.split('').reverse().join('');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

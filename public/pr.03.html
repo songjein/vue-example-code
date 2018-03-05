@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<title>Vue Practice</title>
+	<!--<script src="https://cdn.jsdeliver.net/npm/vue"></script> -->
+    <script src="/vue.js"></script>
+</head>
+<body>
+	<a href="/">go to root</a>
+    <div id="app">
+        <header>
+            <h3>
+                {{ message }} <br>
+                {{ newMsg }}
+            </h3>
+        </header>
+        <section>
+            <p v-bind:id="uid"></p>
+            <button v-on:click="clickBtn">alert</button>
+            <button @click="newBtn">newBtn</button>
+
+            <ul v-if="flag">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </section>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vuejs',
+                newMsg: 'new message',
+                uid: '10',
+                flag: true,
+            },
+            methods: {
+                // ES5
+                clickBtn: function(){
+                    this.flag= true;
+                    alert('alert');
+                },    
+                // ES6
+                newBtn(){
+                    this.uid = '20';
+                    this.flag = false;
+                    alert('new btn & change uid');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
