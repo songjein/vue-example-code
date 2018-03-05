@@ -6,6 +6,7 @@ var fs = require('fs');
 var app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 app.get('/', function(req,res){
 	filelist = "";

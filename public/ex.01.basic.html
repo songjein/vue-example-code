@@ -7,5 +7,16 @@
 </head>
 <body>
 	<a href="/">go to root</a>
+    <div id="app">
+        {{ message }}
+    </div>
+    <script>
+        new Vue({
+           el: '#app',
+           data: {
+               message: 'Hello'
+           }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<title>Vue Practice</title>
+	<!--<script src="https://cdn.jsdeliver.net/npm/vue"></script> -->
+    <script src="/vue.js"></script>
+</head>
+<body>
+	<a href="/">go to root</a>
+    <div id="app">
+        <div> {{ message }} </div>
+        <todo-footer></todo-footer>
+        <todo-list></todo-list>
+    </div>
+    <script>
+        Vue.component('todo-footer', {
+            template: '<p>This is another global child component</p>'
+        });
+
+        var cmp = {
+            template: '<p>this is another local child component</p>'
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'this is a parent component'
+            },
+            components: {
+                'todo-list': cmp
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<title>Vue Practice</title>
+	<!--<script src="https://cdn.jsdeliver.net/npm/vue"></script> -->
+    <script src="/vue.js"></script>
+</head>
+<body>
+	<a href="/">go to root</a>
+    <div id="app">
+        <child-component></child-component>
+    </div>
+    <script>
+        var eventBus = new Vue();
+
+        Vue.component('child-component', {
+            template: '<div>하위 컴포넌트 영역.<br><button v-on:click="showLog">show</button></div>',
+            methods:{
+                showLog: function(){
+                    eventBus.$emit('triggerEventBus', 100);
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app',
+            created: function(){
+                eventBus.$on('triggerEventBus', function(value){
+                    console.log("이벤트를 전달 받음. 전달 받은 값: ", value);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
