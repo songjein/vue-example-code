@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<title>Vue Practice</title>
+	<!--<script src="https://cdn.jsdeliver.net/npm/vue"></script> -->
+    <script src="/vue.js"></script>
+</head>
+<body>
+	<a href="/">go to root</a>
+    <div id="app">
+        <p>
+            자바스크립트의 선언문 및 if문 사용 못함
+            복잡한 연산은 인스턴스 안에서 처리할 것
+        </p>
+        <!-- {{ var a = 10; }}--> <!-- X -->
+        <!-- {{ if (true) {return 100} }}--> <!-- X -->
+        {{ true ? 100 : 0 }} <!-- O -->
+
+        <!--{{ message.split('').reverse().join('') }}--> <!-- 복잡한 연산 X -->
+        {{ reversedMessage }} <!-- O -->
+
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js'
+            },
+            computed: {
+                reversedMessage: function(){
+                    return this.message.split('').reverse().join('');
+                }    
+            }
+        });
+    </script>
+</body>
+</html>
